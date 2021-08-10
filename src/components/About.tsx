@@ -1,7 +1,13 @@
 import React from 'react';
 
 const About: React.FC = () => {
-  return <div>about</div>;
+  return (
+    <>
+      <div style={{ height: '100rem', background: 'skyblue' }}>
+        Long content
+      </div>
+    </>
+  );
 };
 
 export default About;

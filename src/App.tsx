@@ -7,13 +7,14 @@ import {
   Switch,
   Route,
   Link,
-  NavLink,
+  useRouteMatch,
 } from 'react-router-dom';
 import About from 'components/About';
 import User from 'components/User';
 import Home from 'components/Home';
 import Topics from 'components/Topics';
 import AllUsers from 'components/AllUsers';
+import OldSchoolMenuLink from 'components/OldSchoolMenuLink';
 
 const Nav = styled.nav`
   width: 100%;
@@ -26,8 +27,9 @@ const Nav = styled.nav`
 `;
 const Content = styled.div`
   background-color: #ffffff;
-  height: calc(100% - 3rem);
   padding: 2rem;
+  overflow: auto;
+  height: calc(100% - 3rem);
 `;
 
 function App() {
@@ -35,10 +37,10 @@ function App() {
     <div className="App" style={{ width: '100%', height: '100%' }}>
       <Router>
         <Nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/users">Users</Link>
-          <Link to="/topics">Topics</Link>
+          <OldSchoolMenuLink activeOnlyWhenExact to="/" label="Home" />
+          <OldSchoolMenuLink activeOnlyWhenExact to="/about" label="About" />
+          <OldSchoolMenuLink activeOnlyWhenExact to="/users" label="Users" />
+          <OldSchoolMenuLink activeOnlyWhenExact to="/topics" label="Topics" />
         </Nav>
         <Content>
           <Switch>
