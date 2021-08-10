@@ -2,11 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import './index.css';
 import 'reset-css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink,
+} from 'react-router-dom';
 import About from 'components/About';
-import Users from 'components/Users';
+import User from 'components/User';
 import Home from 'components/Home';
 import Topics from 'components/Topics';
+import AllUsers from 'components/AllUsers';
 
 const Nav = styled.nav`
   width: 100%;
@@ -33,20 +40,20 @@ function App() {
           <Link to="/users">Users</Link>
           <Link to="/topics">Topics</Link>
         </Nav>
-
         <Content>
           <Switch>
             <Route path="/about">
               <About />
             </Route>
+            <Route path="/users/:id">
+              <User />
+            </Route>
             <Route path="/users">
-              <Users />
+              <AllUsers />
             </Route>
             <Route path="/topics">
               <Topics />
             </Route>
-
-            {/* 왜 이게 젤 마지막에 와야 정상작동할까? */}
             <Route path="/">
               <Home />
             </Route>
