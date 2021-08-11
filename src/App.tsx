@@ -10,10 +10,9 @@ import {
   useRouteMatch,
 } from 'react-router-dom';
 import About from 'components/About';
-import User from 'components/User';
 import Home from 'components/Home';
 import Topics from 'components/Topics';
-import AllUsers from 'components/AllUsers';
+import NoMatch from 'components/NoMatch';
 import OldSchoolMenuLink from 'components/OldSchoolMenuLink';
 
 const Nav = styled.nav`
@@ -39,22 +38,24 @@ function App() {
         <Nav>
           <OldSchoolMenuLink activeOnlyWhenExact to="/" label="Home" />
           <OldSchoolMenuLink activeOnlyWhenExact to="/about" label="About" />
-          <OldSchoolMenuLink activeOnlyWhenExact to="/users" label="Users" />
+          <OldSchoolMenuLink activeOnlyWhenExact to="/auth" label="Auth" />
           <OldSchoolMenuLink activeOnlyWhenExact to="/topics" label="Topics" />
+          <OldSchoolMenuLink
+            activeOnlyWhenExact
+            to="/no-match"
+            label="No match"
+          />
         </Nav>
         <Content>
           <Switch>
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/users/:id">
-              <User />
-            </Route>
-            <Route path="/users">
-              <AllUsers />
-            </Route>
             <Route path="/topics">
               <Topics />
+            </Route>
+            <Route path="*">
+              <NoMatch />
             </Route>
             <Route path="/">
               <Home />
