@@ -13,6 +13,7 @@ import {
 import About from 'components/About';
 import Home from 'components/Home';
 import Topics from 'components/Topics';
+import Animation from 'components/Animation';
 import NoMatch from 'components/NoMatch';
 import Recursive from 'components/Recursive';
 import OldSchoolMenuLink from 'components/OldSchoolMenuLink';
@@ -40,7 +41,11 @@ function App() {
         <Nav>
           <OldSchoolMenuLink activeOnlyWhenExact to="/home" label="Home" />
           <OldSchoolMenuLink activeOnlyWhenExact to="/about" label="About" />
-          <OldSchoolMenuLink activeOnlyWhenExact to="/auth" label="Auth" />
+          <OldSchoolMenuLink
+            activeOnlyWhenExact
+            to="/animation"
+            label="Animation"
+          />
           <OldSchoolMenuLink activeOnlyWhenExact to="/topics" label="Topics" />
           <OldSchoolMenuLink
             activeOnlyWhenExact
@@ -58,6 +63,9 @@ function App() {
           <Switch>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/animation">
+              <Animation />
             </Route>
             <Route path="/topics">
               <Topics />
