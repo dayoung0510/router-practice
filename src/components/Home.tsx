@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { Prompt } from 'react-router-dom';
 
 const Home: React.FC = () => {
@@ -12,6 +12,7 @@ const Home: React.FC = () => {
           setIsBlocking(false);
         }}
       >
+        <h3>{isBlocking ? '블로킹 되고 있습니다' : '블로킹 해제'}</h3>
         <Prompt when={isBlocking} message="정말 빠져나가시겠습니까?" />
         <input
           type="text"

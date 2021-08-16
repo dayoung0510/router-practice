@@ -8,17 +8,19 @@ import {
   Route,
   Link,
   useRouteMatch,
+  Redirect,
 } from 'react-router-dom';
 import About from 'components/About';
 import Home from 'components/Home';
 import Topics from 'components/Topics';
 import NoMatch from 'components/NoMatch';
+import Recursive from 'components/Recursive';
 import OldSchoolMenuLink from 'components/OldSchoolMenuLink';
 
 const Nav = styled.nav`
   width: 100%;
   height: 3rem;
-  background-color: #ca8989;
+  background-color: gray;
   color: #fff;
   display: flex;
   justify-content: space-around;
@@ -36,7 +38,7 @@ function App() {
     <div className="App" style={{ width: '100%', height: '100%' }}>
       <Router>
         <Nav>
-          <OldSchoolMenuLink activeOnlyWhenExact to="/" label="Home" />
+          <OldSchoolMenuLink activeOnlyWhenExact to="/home" label="Home" />
           <OldSchoolMenuLink activeOnlyWhenExact to="/about" label="About" />
           <OldSchoolMenuLink activeOnlyWhenExact to="/auth" label="Auth" />
           <OldSchoolMenuLink activeOnlyWhenExact to="/topics" label="Topics" />
@@ -44,6 +46,12 @@ function App() {
             activeOnlyWhenExact
             to="/no-match"
             label="No match"
+          />
+
+          <OldSchoolMenuLink
+            activeOnlyWhenExact
+            to="/recursive"
+            label="Recursive"
           />
         </Nav>
         <Content>
@@ -54,11 +62,18 @@ function App() {
             <Route path="/topics">
               <Topics />
             </Route>
+            <Route path="/recursive">
+              <Recursive />
+            </Route>
+            <Route exact path="/home">
+              <Home />
+            </Route>
+
+            {/* <Route path="/">
+              <Redirect to="/home" />
+            </Route> */}
             <Route path="*">
               <NoMatch />
-            </Route>
-            <Route path="/">
-              <Home />
             </Route>
           </Switch>
         </Content>
